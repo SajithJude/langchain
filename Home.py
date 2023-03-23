@@ -4,32 +4,18 @@ import openai
 from langchain.document_loaders import PyPDFLoader
 from langchain.indexes import VectorstoreIndexCreator
 from langchain.chains.question_answering import load_qa_chain
-
-
-from langchain.vectorstores import Chroma
-
-
 openai.api_key =  os.getenv("OPENAI_API_KEY ")
 
 
-persist_directory = 'db'
+loader = PyPDFLoader("content/Treasury Management Book .pdf")
+# data = loader.load()
+index = VectorstoreIndexCreator().from_loaders([loader])
 
-try:
-    vectordb = Chroma(persist_directory=persist_directory)
-except FileNotFoundError:
-    loader = PyPDFLoader("content/Treasury Management Book .pdf")
-    data = loader.load()
-    vectordb = Chroma.from_documents(documents=data, persist_directory=persist_directory)
-    vectordb.persist()
-    st.write(vectordb)
-
-# index = VectorstoreIndexCreator().from_loaders([loader])
-
-query = st.text_input("Enter your question", placeholder="What this book mean by Financial Risk")
+query = st.text_input("Enter your question", placeholder="What this book mean by Financial Risk ?")
 
 if st.button("Submit"):
-    respones = vectordb.query_with_sources(query)
-    # st.write(respones)
+    respones = index.query_with_sources(query)
+    st.write(respones)
     sources = respones['sources']
     
     if sources == "content/Treasury Management Book .pdf":
