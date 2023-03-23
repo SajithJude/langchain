@@ -12,7 +12,7 @@ loader = PyPDFLoader("content/Treasury Management Book .pdf")
 index = VectorstoreIndexCreator().from_loaders([loader])
 
 query = "What did the president say about Ketanji Brown Jackson"
-index.query_with_sources(query)
+st.write(index.query_with_sources(query))
 
 
 
