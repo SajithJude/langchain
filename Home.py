@@ -14,7 +14,7 @@ index = VectorstoreIndexCreator().from_loaders([loader])
 
 
 # query = st.text_input("Type your message here")
-qu = "What is treasury management"
+# qu = 
 
 # response = 
-st.write(index.query(str(qu)))
+st.write(index.query("What is treasury management"))
