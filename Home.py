@@ -12,7 +12,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 from langchain.document_loaders import TextLoader
-loader = TextLoader('content/treasury.txt')
+loader = TextLoader('content/inputenglish.txt')
 documents = loader.load()
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 texts = text_splitter.split_documents(documents)
