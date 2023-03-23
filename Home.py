@@ -14,7 +14,11 @@ index = VectorstoreIndexCreator().from_loaders([loader])
 
 
 query = st.text_input("Type your message here")
+qu = "What is treasury management"
 
-if query is not None:
-    response = index.query(query)
-    st.write(response)
+response = index.query(qu)
+st.write(qu)
+
+# if query is not None:
+#     response = index.query(query)
+#     st.write(response)
