@@ -4,7 +4,7 @@ import openai
 from langchain.document_loaders import PyPDFLoader
 from langchain.indexes import VectorstoreIndexCreator
 from langchain.chains.question_answering import load_qa_chain
-
+openai.api_key =  os.getenv("API_KEY")
 
 
 loader = PyPDFLoader("content/Treasury Management Book .pdf")
