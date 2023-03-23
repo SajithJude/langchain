@@ -16,7 +16,7 @@ query = st.text_input("Enter your question")
 if st.button("Submit"):
     respones = index.query_with_sources(query)
     st.write(respones)
-    sources = responses['sources']
+    sources = respones['sources']
     st.write(sources)
     answer = st.write(respones['answer'])
 
