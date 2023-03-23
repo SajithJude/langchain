@@ -16,10 +16,10 @@ openai.api_key =  os.getenv("OPENAI_API_KEY ")
 loader = PyPDFLoader("content/Treasury Management Book .pdf")
 data = loader.load()
 
-db = Chroma.from_documents(data)
+# db = Chroma.from_documents(data)
 persist_directory = 'db'
 # embedding = OpenAIEmbeddings()
-vectordb = Chroma.from_documents(documents=docs, persist_directory=persist_directory)
+vectordb = Chroma.from_documents(documents=data, persist_directory=persist_directory)
 vectordb.persist()
 st.write(vectordb)
 
