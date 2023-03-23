@@ -7,7 +7,7 @@ import openai
 openai.api_key = os.getenv("API_KEY")
 
 
-loader = PyPDFLoader("/content/Treasury Management Book .pdf")
+loader = PyPDFLoader("content/Treasury Management Book .pdf")
 pages = loader.load_and_split()
 index = VectorstoreIndexCreator().from_loaders([loader])
 
