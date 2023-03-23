@@ -3,3 +3,4 @@ langchain
 pypdf
 chromadb
 openai
+beautifulsoup4
