@@ -4,7 +4,7 @@ from langchain.indexes import VectorstoreIndexCreator
 import os
 import openai
 
-openai.api_key = os.getenv("API_KEY")
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 loader = PyPDFLoader("content/Treasury Management Book .pdf")
