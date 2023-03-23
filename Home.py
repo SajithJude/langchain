@@ -12,16 +12,16 @@ from langchain.vectorstores import Chroma
 openai.api_key =  os.getenv("OPENAI_API_KEY ")
 
 
-
-loader = PyPDFLoader("content/Treasury Management Book .pdf")
-data = loader.load()
-
-# db = Chroma.from_documents(data)
 persist_directory = 'db'
-# embedding = OpenAIEmbeddings()
-vectordb = Chroma.from_documents(documents=data, persist_directory=persist_directory)
-vectordb.persist()
-st.write(vectordb)
+
+try:
+    vectordb = Chroma(persist_directory=persist_directory)
+except FileNotFoundError:
+    loader = PyPDFLoader("content/Treasury Management Book .pdf")
+    data = loader.load()
+    vectordb = Chroma.from_documents(documents=data, persist_directory=persist_directory)
+    vectordb.persist()
+    st.write(vectordb)
 
 # index = VectorstoreIndexCreator().from_loaders([loader])
 
