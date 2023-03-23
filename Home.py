@@ -11,7 +11,7 @@ loader = PyPDFLoader("content/Treasury Management Book .pdf")
 # data = loader.load()
 index = VectorstoreIndexCreator().from_loaders([loader])
 
-query = st.text_input("Enter your question")
+query = st.text_input("Enter your question", placeholder="What this book mean by Financial Risk")
 
 if st.button("Submit"):
     respones = index.query_with_sources(query)
@@ -20,11 +20,11 @@ if st.button("Submit"):
     
     if sources == "content/Treasury Management Book .pdf":
         st.write(respones['answer'])
-        st.caption('Source of answer',sources)
+        st.write('Source of answer',sources)
     else:
         st.warning('The answer Generated is not sourced from the treasurary management book, The orginal sources of the answer is provided bellow')
         st.write(respones['answer'])
-        st.caption('Source of answer',sources)
+        st.write('Source of answer',sources)
 
         # answer = st.write(respones['answer'])
 
