@@ -21,10 +21,10 @@ embeddings = OpenAIEmbeddings()
 docsearch = Chroma.from_documents(texts, embeddings)
 qa = VectorDBQA.from_chain_type(llm=OpenAI(), chain_type="stuff", vectorstore=docsearch)
 
-query = "what is this book about"
-qa.run(query)
+query = st.text_input("Enter your question")
+# qa.run(query)
 # query = st.text_input("Type your message here")
 # qu = 
-
+if query is not None:
 # response = 
-st.write(qa.run(query))
+    st.write(qa.run(query))
