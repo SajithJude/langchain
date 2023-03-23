@@ -14,7 +14,10 @@ index = VectorstoreIndexCreator().from_loaders([loader])
 query = st.text_input("Enter your question")
 
 if st.button("Submit"):
-    st.write(index.query_with_sources(query))
+    respones = index.query_with_sources(query)
+    sources = responses.sources
+    st.write(sources)
+    answer = st.write(respones.answer)
 
 
 
