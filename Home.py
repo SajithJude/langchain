@@ -28,7 +28,7 @@ except FileNotFoundError:
 query = st.text_input("Enter your question", placeholder="What this book mean by Financial Risk")
 
 if st.button("Submit"):
-    respones = index.query_with_sources(query)
+    respones = vectordb.query_with_sources(query)
     # st.write(respones)
     sources = respones['sources']
     
