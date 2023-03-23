@@ -4,11 +4,21 @@ import openai
 from langchain.document_loaders import PyPDFLoader
 from langchain.indexes import VectorstoreIndexCreator
 from langchain.chains.question_answering import load_qa_chain
+
+
+from langchain.vectorstores import Chroma
+
+
 openai.api_key =  os.getenv("OPENAI_API_KEY ")
 
 
+
 loader = PyPDFLoader("content/Treasury Management Book .pdf")
-# data = loader.load()
+data = loader.load()
+
+db = Chroma.from_documents(data)
+st.write(db)
+
 index = VectorstoreIndexCreator().from_loaders([loader])
 
 query = st.text_input("Enter your question", placeholder="What this book mean by Financial Risk")
