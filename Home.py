@@ -17,9 +17,13 @@ loader = PyPDFLoader("content/Treasury Management Book .pdf")
 data = loader.load()
 
 db = Chroma.from_documents(data)
-st.write(db)
+persist_directory = 'db'
+embedding = OpenAIEmbeddings()
+vectordb = Chroma.from_documents(documents=docs, persist_directory=persist_directory)
+vectordb.persist()
+st.write(vectordb)
 
-index = VectorstoreIndexCreator().from_loaders([loader])
+# index = VectorstoreIndexCreator().from_loaders([loader])
 
 query = st.text_input("Enter your question", placeholder="What this book mean by Financial Risk")
 
