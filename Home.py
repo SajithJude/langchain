@@ -18,7 +18,7 @@ data = loader.load()
 
 db = Chroma.from_documents(data)
 persist_directory = 'db'
-embedding = OpenAIEmbeddings()
+# embedding = OpenAIEmbeddings()
 vectordb = Chroma.from_documents(documents=docs, persist_directory=persist_directory)
 vectordb.persist()
 st.write(vectordb)
