@@ -34,6 +34,7 @@ from langchain.chains import LLMChain, SimpleSequentialChain # import LangChain 
 from langchain.llms import OpenAI # import OpenAI model
 from langchain.prompts import PromptTemplate # import PromptTemplate
 import os 
+import openai
 
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
