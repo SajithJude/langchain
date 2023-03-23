@@ -13,10 +13,10 @@ index = VectorstoreIndexCreator().from_loaders([loader])
 
 
 
-query = st.text_input("Type your message here")
+# query = st.text_input("Type your message here")
 qu = "What is treasury management"
 
-response = index.query(qu)
+response = index.query(str(qu))
 st.write(qu)
 
 # if query is not None:
