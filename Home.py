@@ -18,9 +18,9 @@ if st.button("Submit"):
     st.write(respones)
     sources = respones['sources']
     st.write(sources)
-    if sources[0] == "content/Treasury Management Book .pdf":
+    if sources == "content/Treasury Management Book .pdf":
         st.write(respones['answer'])
-        answer = st.write(respones['answer'])
+        # answer = st.write(respones['answer'])
 
 
 
