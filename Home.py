@@ -37,14 +37,14 @@ import os
 import openai
 
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+API = os.getenv("OPENAI_API_KEY")
 
 # Set the title of the Streamlit app
 st.title("✅ Fact Checker  : Using LangChain `SimpleSequentialChain`")
 
 ## If an API key has been provided, create an OpenAI language model instance
 if API:
-    llm = OpenAI(temperature=0.7, openai_api_key=openai.api_key)
+    llm = OpenAI(temperature=0.7, openai_api_key=API)
 else:
     # If an API key hasn't been provided, display a warning message
     st.warning("Enter your OPENAI API-KEY. Get your OpenAI API key from [here](https://platform.openai.com/account/api-keys).\n")
