@@ -12,7 +12,7 @@ try:
     index = VectorstoreIndexCreator().from_loaders([loader])
 
     qu = "What is treasury management"
-    response = index.query(str(qu))
+    response = index.query(str(qu),type=String)
     st.write(qu)
 
 except IndexError as e:
