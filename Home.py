@@ -15,7 +15,7 @@ query = st.text_input("Enter your question", placeholder="What this book mean by
 
 if st.button("Submit"):
     respones = index.query_with_sources(query)
-    st.write(respones)
+    # st.write(respones)
     sources = respones['sources']
     
     if sources == "content/Treasury Management Book .pdf":
