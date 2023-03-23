@@ -6,19 +6,22 @@ import openai
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
+try:
+    loader = PyPDFLoader("content/Treasury Management Book .pdf")
+    pages = loader.load_and_split()
+    index = VectorstoreIndexCreator().from_loaders([loader])
 
-loader = PyPDFLoader("content/Treasury Management Book .pdf")
-pages = loader.load_and_split()
-index = VectorstoreIndexCreator().from_loaders([loader])
+    qu = "What is treasury management"
+    response = index.query(str(qu))
+    st.write(qu)
 
-
-
-# query = st.text_input("Type your message here")
-qu = "What is treasury management"
-
-response = index.query(str(qu))
-st.write(qu)
-
-# if query is not None:
-#     response = index.query(query)
-#     st.write(response)
+except IndexError as e:
+    st.write("IndexError occurred:", e)
+    st.write("Creating VectorstoreIndex...")
+    loader = PyPDFLoader("content/Treasury Management Book .pdf")
+    pages = loader.load_and_split()
+    index = VectorstoreIndexCreator().from_loaders([loader])
+    
+    qu = "What is treasury management"
+    response = index.query(str(qu))
+    st.write(qu)
