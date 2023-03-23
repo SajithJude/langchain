@@ -17,9 +17,15 @@ if st.button("Submit"):
     respones = index.query_with_sources(query)
     st.write(respones)
     sources = respones['sources']
-    st.write(sources)
+    
     if sources == "content/Treasury Management Book .pdf":
         st.write(respones['answer'])
+        st.caption('Source of answer',sources)
+    else:
+        st.warning('The answer Generated is not sourced from the treasurary management book, The orginal sources of the answer is provided bellow')
+        st.write(respones['answer'])
+        st.caption('Source of answer',sources)
+
         # answer = st.write(respones['answer'])
 
 
